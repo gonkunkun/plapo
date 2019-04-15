@@ -1,14 +1,25 @@
 {
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["esnext", "esnext.asynciterable", "dom"],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "noEmit": true,
     "baseUrl": ".",
-    "types": ["@types/node", "@nuxt/vue-app"],
     "paths": {
       "@/*": ["./*"],
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "vue-class-component": ["/node_modules/vue-class-component/lib/index"],
+      "vue-property-decorator": [
+        "/node_modules/vue-property-decorator/lib/vue-property-decorator"
+      ]
     },
-    "target": "es5",
-    "strict": true,
-    "module": "es2015",
-    "moduleResolution": "node"
+    "types": ["@types/node", "@nuxt/vue-app"]
   }
 }

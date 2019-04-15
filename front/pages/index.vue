@@ -1,72 +1,51 @@
 <template>
-  <v-layout column justify-center align-center>
-    <v-flex xs12 sm8 md6>
-      <div class="text-xs-center">
-        <logo/>
-        <vuetify-logo/>
-      </div>
-      <v-card>
-        <v-card-title class="headline">Welcome to the Vuetify + Nuxt.js template</v-card-title>
-        <v-card-text>
-          <p>
-            Vuetify is a progressive Material Design component framework for
-            Vue.js. It was designed to empower developers to create amazing
-            applications.
-          </p>
-          <p>
-            For more information on Vuetify, check out the
-            <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-            >documentation</a>.
-          </p>
-          <p>
-            If you have questions, please join the official
-            <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              title="chat"
-            >discord</a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github
-            <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-            >issue board</a>.
-          </p>
-          <p>
-            Thank you for developing with Vuetify and I look forward to bringing
-            more exciting features in the future.
-          </p>
-          <div class="text-xs-right">
-            <em>
-              <small>&mdash; John Leider</small>
-            </em>
-          </div>
-          <hr class="my-3">
-          <a href="https://nuxtjs.org/" target="_blank">Nuxt Documentation</a>
-          <br>
-          <a href="https://github.com/nuxt/nuxt.js" target="_blank">Nuxt GitHub</a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer/>
-          <v-btn color="primary" flat nuxt to="/inspire">Continue</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-flex>
-  </v-layout>
+  <section class="pa4">
+    <div class="bg-white-90 pa4">
+      <div class="f1">Nuxt TypeScript Starter</div>
+      <div class="f3">test script: {{ selected }} {{ opened }}</div>
+      <div class="f3">test script: {{ testFlag }}</div>
+      <div class="f3">global test: {{ global }}</div>
+      {{ selected }}
+    </div>
+  </section>
 </template>
 
 <script lang="ts">
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import { Component, Vue } from 'nuxt-property-decorator'
+import { namespace } from 'vuex-class'
 
-export default {
-  components: {
-    Logo,
-    VuetifyLogo
-  }
+import * as plan from '~/store/modules/plan'
+
+const Plan = namespace(plan.name)
+
+@Component({
+  components: {}
+})
+export default class IndexPage extends Vue {
+  @Plan.State selected
+  @Plan.State opened
+  // @Provide() foo = 'foo'
+  // @Provide('bar') baz = 'bar'
+
+  // /** head() */
+  // private head() {
+  //   return { title: "タイトル" });
+  // }
+
+  // /** prop() */
+  // @Prop() name: string = "なまえ";
+
+  // /** data() */
+  // private testFlag: string = 'test'
+
+  // /** computed() */
+  // public get isEmptyName(): boolean {
+  //   return this.name === "";
+  // }
+
+  // /** methods() */
+  // private toggleFlag(): void {
+  //   this.flag = !this.flag;
+  // }
 }
 </script>
